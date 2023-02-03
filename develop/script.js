@@ -1,8 +1,10 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+var today = dayjs();
+var date = $('#currentDay');
 
-console.log('test')
+
 $(function () {
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
@@ -22,8 +24,15 @@ $(function () {
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
+      
   });
+  date.text(today.format('dddd MMMM, D'))
+    
+    
+  /* display current day at top of calendar using day.js and appending it to the container
+  create new list items? for 9 through 5 o'clock
+  color code each block for past present and future
+  use local storage to enter an event and save it to local storage after the "save" button is clicked
 
-  /* display current day at top of calendar using day.js and appending it to the contain
 
   */
