@@ -2,8 +2,59 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var today = dayjs();
-var date = $('#currentDay');
+var dateEl = $('#currentDay');
+var currentHour = dayjs().format('H');
+//time in variables is based on hours 0-23
+var hour9 = $('#hour-9');
+var hour10 = $('#hour-10');
+var hour11 = $('#hour-11');
+var hour12 = $('#hour-12');
+var hour13 = $('#hour-13');
+var hour14 = $('#hour-14');
+var hour15 = $('#hour-15');
+var hour16 = $('#hour-16');
+var hour17 = $('#hour-17');
 
+var textAreaHr9 = $('#textArea9');
+var textAreaHr10 = $('#textArea10');
+var textAreaHr11 = $('#textArea11');
+var textAreaHr12 = $('#textArea12');
+var textAreaHr13 = $('#textArea13');
+var textAreaHr14 = $('#textArea14');
+var textAreaHr15 = $('#textArea15');
+var textAreaHr16 = $('#textArea16');
+var textAreaHr17 = $('#textArea17');
+
+var saveBtnHr9 = $('#saveBtn9')
+var saveBtnHr10 = $('#saveBtn10')
+var saveBtnHr11 = $('#saveBtn11')
+var saveBtnHr12 = $('#saveBtn12')
+var saveBtnHr13 = $('#saveBtn13')
+var saveBtnHr14 = $('#saveBtn14')
+var saveBtnHr15 = $('#saveBtn15')
+var saveBtnHr16 = $('#saveBtn16')
+var saveBtnHr17 = $('#saveBtn17')
+
+var message = localStorage.getItem("message")
+
+
+renderText()
+
+function renderText(){
+  var message = localStorage.getItem("message")
+  textAreaHr9.text(message)
+ 
+};
+
+saveBtn.on('click',function(){
+  console.log('click registered')
+  localStorage.setItem("message", textAreaHr9.val())
+  renderText()
+  
+})
+
+
+console.log(currentHour)
 
 $(function () {
     // TODO: Add a listener for click events on the save button. This code should
@@ -26,13 +77,15 @@ $(function () {
     // TODO: Add code to display the current date in the header of the page.
       
   });
-  date.text(today.format('dddd MMMM, D'))
+  dateEl.text(today.format('[It is currently] dddd MMMM, D [at] h:mm a'))
     
+  // if(currentHour)
     
-  /* display current day at top of calendar using day.js and appending it to the container
-  create new list items? for 9 through 5 o'clock
+  /* display current day at top of calendar using day.js  use set interval to update time?
+  
   color code each block for past present and future
   use local storage to enter an event and save it to local storage after the "save" button is clicked
-
+create if statement if(current time) give 'present' class
+if(current time)
 
   */
