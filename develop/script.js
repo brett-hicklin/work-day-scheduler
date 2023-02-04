@@ -1,7 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var today = dayjs();
+
 var dateEl = $('#currentDay');
 var currentHour = dayjs().format('H');
 var saveBtn = $('.saveBtn')
@@ -18,14 +18,9 @@ var hour15 = $('#hour-15');
 var hour16 = $('#hour-16');
 var hour17 = $('#hour-17');
 
-
-
-
 var timeBlock = $('.time-block')
 
 
-
-renderText()
 
 function renderText(){
   $('textarea').each(function(){
@@ -41,9 +36,22 @@ saveBtn.on('click',function(){
 
 
 
+function updateTimeDisplay(){
+  setInterval(function(){
+    var today = dayjs();
+    dateEl.text(today.format('[It is currently] dddd MMMM, D [at] h:mm a'))
+  },1000) 
+}
+
+
+
+
 
 
 $(function () {
+  renderText()
+  updateTimeDisplay()
+  
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
@@ -64,7 +72,7 @@ $(function () {
     // TODO: Add code to display the current date in the header of the page.
       
   });
-  dateEl.text(today.format('[It is currently] dddd MMMM, D [at] h:mm a'))
+ 
     
  
     
