@@ -3,7 +3,7 @@
 // in the html.
 
 var dateEl = $('#currentDay');
-var currentHour = dayjs().format('H');
+
 var saveBtn = $('.saveBtn')
 //time in variables is based on hours 0-23
 
@@ -39,19 +39,60 @@ saveBtn.on('click',function(){
 function updateTimeDisplay(){
   setInterval(function(){
     var today = dayjs();
-    dateEl.text(today.format('[It is currently] dddd MMMM, D [at] h:mm a'))
+    var currentHour = dayjs().format('H');
+    dateEl.text(today.format('[It is currently] dddd MMMM, D [at] h:mm a'))   
   },1000) 
 }
 
+function colorChangeTimer(){
+  setInterval(colorChanger,600000) 
+}
 
+function colorChanger(){
+  var currentHour = Number(dayjs().format('H'));
+  $('textarea').each(function(){
+    var hourId = $(this).parent().attr('id')
+    var idSplitArray = hourId.split("-");
+    var hour = Number(idSplitArray[1])
+    console.log(typeof currentHour)
+    console.log(typeof hour)
+    console.log(currentHour > hour)
+    console.log(hour +"this is hour")
+    console.log(hourId + "this is hourId")
+    
+    $(`#${hourId}`).removeClass()
+    $(`#${hourId}`).addClass('row')
+    $(`#${hourId}`).addClass('time-block')
 
+  if(currentHour > hour){
+      $(`#${hourId}`).addClass('past')
+    console.log("past")
+   } else if (currentHour === hour){
+      $(`#${hourId}`).addClass('present')
+      console.log("present")
+   } else if(currentHour < hour){
+      $(`#${hourId}`).addClass('future')
+      console.log("future")
+   }
+  })
+  
+
+  
+}
+
+ 
+ 
+  
+  
 
 
 
 $(function () {
   renderText()
   updateTimeDisplay()
-  
+  colorChangeTimer()
+  colorChanger()
+
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
