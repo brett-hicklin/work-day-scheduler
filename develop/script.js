@@ -5,6 +5,18 @@ var today = dayjs();
 var dateEl = $('#currentDay');
 var currentHour = dayjs().format('H');
 //time in variables is based on hours 0-23
+
+// for( let i=9; i<18; i++){
+//   var hour = $('#hour-i')
+//   var textAreaHr = $('#textAreai')
+//   var saveBtnHr = $('saveBtni')
+//   console.log(hour)
+// }
+
+saveBtn = $('.saveBtn')
+
+
+
 var hour9 = $('#hour-9');
 var hour10 = $('#hour-10');
 var hour11 = $('#hour-11');
@@ -36,7 +48,7 @@ var saveBtnHr16 = $('#saveBtn16')
 var saveBtnHr17 = $('#saveBtn17')
 
 var message = localStorage.getItem("message")
-
+var timeBlock = $('.time-block')
 
 renderText()
 
@@ -46,15 +58,23 @@ function renderText(){
  
 };
 
-saveBtn.on('click',function(){
-  console.log('click registered')
-  localStorage.setItem("message", textAreaHr9.val())
-  renderText()
+// saveBtn.on('click',function(event){
+//   console.log('click registered')
+//   console.log(event.target)
   
+//   renderText()
+  
+// })
+
+timeBlock.on('click',function(event){
+  var key = event.currentTarget.id
+  var description = $(`#${key}`).children().eq(1).val()
+  console.log(description)
+  localStorage.setItem(key,description)
 })
 
 
-console.log(currentHour)
+
 
 $(function () {
     // TODO: Add a listener for click events on the save button. This code should
