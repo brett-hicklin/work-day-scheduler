@@ -20,29 +20,23 @@ var hour17 = $('#hour-17');
 
 
 
-var key = localStorage.getItem("key")
+
 var timeBlock = $('.time-block')
 
 
 
-// renderText()
+renderText()
 
-// function renderText(){
-//   var message = localStorage.getItem("message")
-//   textAreaHr9.text(message)
- 
-// };
+function renderText(){
+  $('textarea').each(function(){
+    $(this).text(localStorage.getItem($(this).parent().attr('id')))
+  })
+};
 
-saveBtn.on('click',function(event){
-  
+saveBtn.on('click',function(){
   var key = $(this).parent().attr('id')
-  console.log(key)
   var description = $(`#${key}`).children().eq(1).val()
- 
   localStorage.setItem(key,description)
-
-  
-  
 })
 
 
