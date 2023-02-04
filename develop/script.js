@@ -4,17 +4,8 @@
 var today = dayjs();
 var dateEl = $('#currentDay');
 var currentHour = dayjs().format('H');
+var saveBtn = $('.saveBtn')
 //time in variables is based on hours 0-23
-
-// for( let i=9; i<18; i++){
-//   var hour = $('#hour-i')
-//   var textAreaHr = $('#textAreai')
-//   var saveBtnHr = $('saveBtni')
-//   console.log(hour)
-// }
-
-saveBtn = $('.saveBtn')
-
 
 
 var hour9 = $('#hour-9');
@@ -27,51 +18,33 @@ var hour15 = $('#hour-15');
 var hour16 = $('#hour-16');
 var hour17 = $('#hour-17');
 
-var textAreaHr9 = $('#textArea9');
-var textAreaHr10 = $('#textArea10');
-var textAreaHr11 = $('#textArea11');
-var textAreaHr12 = $('#textArea12');
-var textAreaHr13 = $('#textArea13');
-var textAreaHr14 = $('#textArea14');
-var textAreaHr15 = $('#textArea15');
-var textAreaHr16 = $('#textArea16');
-var textAreaHr17 = $('#textArea17');
 
-var saveBtnHr9 = $('#saveBtn9')
-var saveBtnHr10 = $('#saveBtn10')
-var saveBtnHr11 = $('#saveBtn11')
-var saveBtnHr12 = $('#saveBtn12')
-var saveBtnHr13 = $('#saveBtn13')
-var saveBtnHr14 = $('#saveBtn14')
-var saveBtnHr15 = $('#saveBtn15')
-var saveBtnHr16 = $('#saveBtn16')
-var saveBtnHr17 = $('#saveBtn17')
 
-var message = localStorage.getItem("message")
+var key = localStorage.getItem("key")
 var timeBlock = $('.time-block')
 
-renderText()
 
-function renderText(){
-  var message = localStorage.getItem("message")
-  textAreaHr9.text(message)
+
+// renderText()
+
+// function renderText(){
+//   var message = localStorage.getItem("message")
+//   textAreaHr9.text(message)
  
-};
+// };
 
-// saveBtn.on('click',function(event){
-//   console.log('click registered')
-//   console.log(event.target)
+saveBtn.on('click',function(event){
   
-//   renderText()
-  
-// })
-
-timeBlock.on('click',function(event){
-  var key = event.currentTarget.id
+  var key = $(this).parent().attr('id')
+  console.log(key)
   var description = $(`#${key}`).children().eq(1).val()
-  console.log(description)
+ 
   localStorage.setItem(key,description)
+
+  
+  
 })
+
 
 
 
@@ -99,13 +72,11 @@ $(function () {
   });
   dateEl.text(today.format('[It is currently] dddd MMMM, D [at] h:mm a'))
     
-  // if(currentHour)
+ 
     
-  /* display current day at top of calendar using day.js  use set interval to update time?
+//    display current day at top of calendar using day.js  use set interval to update time?
   
-  color code each block for past present and future
-  use local storage to enter an event and save it to local storage after the "save" button is clicked
-create if statement if(current time) give 'present' class
-if(current time)
-
-  */
+//   color code each block for past present and future
+//   use local storage to enter an event and save it to local storage after the "save" button is clicked
+// create if statement if(current time) give 'present' class
+// if(current time)
